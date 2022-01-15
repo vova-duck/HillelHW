@@ -30,9 +30,9 @@ public class University {
             System.out.println();
 
 
-            System.out.println("Студенты рождены в 2001 году:");
+            System.out.println("Студенты рождены после 2001 году:");
             for (int i = 0; i < students.length-1; i++) {
-                if (students[i].getYear() == 2000){
+                if (students[i].getYear() >= 2001){
                     System.out.println(students[i]);}
             }
             System.out.println();
