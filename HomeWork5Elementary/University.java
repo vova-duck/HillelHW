@@ -18,7 +18,7 @@ public class University {
             System.out.println("Студенты 3 курса факультета Иностранные языки");
             for (int i = 0; i < students.size() -1; i++) {
                 if(students.get(i).getFaculty().equals("Иностранные языки")){
-                    if (students.get(i).getCourse() == 1){
+                    if (students.get(i).getCourse() == 3){
                         System.out.println(students.get(i));}}
             }
             System.out.println();
@@ -26,7 +26,7 @@ public class University {
 
             System.out.println("Студенты рождены в 2001 году:");
             for (int i = 0; i < students.size()-1; i++) {
-                if (students.get(i).getYear() >= 2000){
+                if (students.get(i).getYear() == 2001){
                     System.out.println(students.get(i));}
             }
             System.out.println();
