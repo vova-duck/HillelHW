@@ -1,14 +1,14 @@
 package HomeWork5Elementary;
 
 public class Student {
-    String name, surname, secondName;
+    private String name, surname, secondName;
     private int id;
-   public int year;
-    String faculty;
-    int group;
-    int course;
-    int phoneNumber;
-    String address;
+    private int year;
+    private String faculty;
+    private int group;
+    private int course;
+    private int phoneNumber;
+    private  String address;
 
     public Student(){
 
@@ -106,9 +106,39 @@ public class Student {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public void checkFaculty(String faculty) {
+
+        if (this.faculty.equals(faculty)) {
+
+            toString();
+        }
+    }
+
+    public void checkFacultyAndGroup(String faculty, int group) {
+
+        if (this.getFaculty().equals(faculty) && this.group == group) {
+           toString();
+        }
+    }
+
+
+    public void checkYearOfBirth(int year){
+
+        if (this.getYear() == year){
+            System.out.println(this);}
+    }
+
+    public void checkGroup(int group){
+
+        if (this.getGroup() == group){
+            System.out.println(this);}
+    }
+
+
     public String toString (){
         return this.surname + " " + this.name + " " + this.secondName +" " +this.year + " года рождения" + " студент факультета " + this.faculty + " в группе № " +
-                this.group + " на " +this.course + " курсе. " + " Личная информация #" + this.id + " номер телефона +380" +this.phoneNumber +
+                this.group + " на " +this.course + " курсе. " + " Личная информация: АйДи номер " + this.id + " номер телефона +380" +this.phoneNumber +
                 " адрес " + this.address;
 
 

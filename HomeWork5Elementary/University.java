@@ -1,66 +1,35 @@
 package HomeWork5Elementary;
 
-import java.util.ArrayList;
 
 public class University {
 
 
     public static void main(String[] args) {
-        Student[] students = new Student[10];
-        for (int i = 0; i < students.length; i++) {
-            students = createStudent().toArray(new Student[i]);
+        Student[] students = createStudents();
+        for (Student student : students) {
+
+            System.out.println(student);
+            System.out.println("___");
         }
-
-
-
-            System.out.println("Студенты факультета Право");
-            for (int i = 0; i < students.length -1 ; i++) {
-                if (students[i].getFaculty().equals("Право")){
-                    System.out.println(students[i]);}
-            }
-
-            System.out.println();
-
-            System.out.println("Студенты 3 курса факультета Иностранные языки");
-            for (int i = 0; i < students.length -1; i++) {
-                if(students[i].getFaculty().equals("Иностранные языки")){
-                    if (students[i].getCourse() == 3){
-                        System.out.println(students[i]);}}
-            }
-            System.out.println();
-
-
-            System.out.println("Студенты рождены после 2001 году:");
-            for (int i = 0; i < students.length-1; i++) {
-                if (students[i].getYear() >= 2001){
-                    System.out.println(students[i]);}
-            }
-            System.out.println();
-
-            System.out.println("Студенты группы 314:");
-            for (int i = 0; i < students.length-1; i++) {
-                if (students[i].getGroup() == 314){
-                    System.out.println(students[i]);}
-            }
 
         }
 
-    public static ArrayList<Student> createStudent() {
+    public static Student[] createStudents() {
         int numberOfStudents = 10;
         String name, surname, secondName;
-        int id;
+        int id ;
         int year;
         String faculty;
         int group;
         int course;
         int phoneNumber;
         String address;
-        ArrayList<Student> students = new ArrayList<>();
+        Student[] students =new Student[10];
         for (int i = 0; i < numberOfStudents; i++) {
             name = giveName();
             surname = giveSurName();
             secondName = giveSecondName();
-            id = i + 1000;
+            id = 1000 + i;
             year = giveBirthYear();
             faculty = giveFaculty();
             group = giveGroupNumber(giveFacultyNumber(faculty), giveCourseNumber(year));
@@ -68,19 +37,20 @@ public class University {
             phoneNumber = givePhoneNumber();
             address = "Улица Пушкина 22";
 
+           Student student = new Student(name, surname, secondName, id, year, faculty, group, course, phoneNumber, address);
+            students[i] = student;
 
-            Student student = new Student(name, surname, secondName, id, year, faculty, group, course, phoneNumber, address);
-            students.add(student);
         }
         return students;
     }
 
 
+
+
     public static String giveName() {
         String[] names = new String[]{"Владимир", "Александр", "Константин", "Олег", "Вильгельм", "Феликс", "Дональд", "Валерий", " Руслан", "Игорь", "Иван", "Пётр", "Тарас", "Николай", "Евгений", "Ярослав", "Виталий", "Василий", "Сергей", "Эдуард", "Юрий"};
-
+        int a = (int) (Math.random() * names.length);
         for (int i = 0; i < names.length; i++) {
-            int a = (int) (Math.random() * names.length);
             if (i == a) {
                 return names[i];
             }
@@ -90,10 +60,9 @@ public class University {
     }
 
     public static String giveSurName() {
-        String[] names = new String[]{"Владимров", "Александров", "Константинов", "Иванов", "Петров", "Тарасов", "Цой", "Шульга", "Яр", "Зубенко"};
-
+        String[] names = new String[]{"Владимиров", "Александров", "Константинов", "Иванов", "Петров", "Тарасов", "Цой", "Шульга", "Яр", "Зубенко"};
+        int a = (int) (Math.random() * names.length);
         for (int i = 0; i < names.length; i++) {
-            int a = (int) (Math.random() * names.length);
             if (i == a) {
                 return names[i];
             }
@@ -104,9 +73,8 @@ public class University {
 
     public static String giveSecondName() {
         String[] secondNames = new String[]{"Владимирович", "Александрович", "Константинович", "Олегович", "Вильгельмович", "Феликсович", "Дональдович", "Валеревич", " Русланович", "Игоревич", "Иванович", "Петрович", "Тарасович", "Николевич", "Евгеневич", "Ярославович", "Виталиевич", "Василиевич", "Сергеевич", "Эдуардович", "Юриевич"};
-
+        int a = (int) (Math.random() * secondNames.length);
         for (int i = 0; i < secondNames.length; i++) {
-            int a = (int) (Math.random() * secondNames.length);
             if (i == a) {
                 return secondNames[i];
             }
@@ -125,9 +93,8 @@ public class University {
 
     public static String giveFaculty() {
         String[] faculties = new String[]{"Философия", "Право", "Криминальное право", "Перевозки грузов", "Иностранные языки"};
-
+        int a = (int) (Math.random() * faculties.length);
         for (int i = 0; i < faculties.length; i++) {
-            int a = (int) (Math.random() * faculties.length);
             if (i == a) {
                 return faculties[i];
             }
@@ -139,7 +106,7 @@ public class University {
 
     public static int giveFacultyNumber(String faculty) {
 
-        if (faculty.equals("Философический")) {
+        if (faculty.equals("Философия")) {
             return 100;
         }
         if (faculty.equals("Право")) {
