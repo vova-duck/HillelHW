@@ -14,7 +14,7 @@ public class ArrayToArrayList {
         count = 0;
     }
 
-    public void checkAndChangeArraySize() {
+    private void checkAndChangeArraySize() {
         if (array.length < count + 1) {
             int doubledSize = (array.length * 2);
             String[] array1 = new String[doubledSize];
