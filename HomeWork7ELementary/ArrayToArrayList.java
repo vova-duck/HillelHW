@@ -56,7 +56,7 @@ public class ArrayToArrayList {
 
     public boolean delete(int index) {
 
-        for (int i = index; i < array.length-1; i++) {
+        for (int i = index + 1; i < array.length-1; i++) {
             array[i-1] = array[i];
             array[i] = null;
         }
