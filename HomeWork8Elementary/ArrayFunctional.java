@@ -18,7 +18,6 @@ public interface ArrayFunctional {
 
     public boolean clear();
 
-    public void checkAndChangeArraySize();
     public void print();
     public int size();
 }
