@@ -90,8 +90,7 @@ public class ObjectArray implements ArrayFunctional{
         return true;
     }
 
-    @Override
-    public void checkAndChangeArraySize() {
+    private void checkAndChangeArraySize() {
         if (arrayListCustom.length < count + 1) {
             int doubledSize = (arrayListCustom.length * 2);
             String[] array1 = new String[doubledSize];
