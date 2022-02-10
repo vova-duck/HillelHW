@@ -1,17 +1,22 @@
 package HomeWork8Elementary;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Objects;
 
-public class ObjectArray implements ArrayFunctional{
+public class ObjectArray implements ArrayFunctional, Iterator{
     private int count;
+    private int index;
     private Object[] arrayListCustom;
+
+    public ObjectArray() {
+        arrayListCustom = new Object[10];
+        this.count = 0;
+        this.index = 0;
+    }
 
     public ObjectArray(int length) {
        arrayListCustom = new Object[length];
         this.count = 0;
+        this.index = 0;
     }
 
     @Override
@@ -37,13 +42,24 @@ public class ObjectArray implements ArrayFunctional{
         count++;
         return false;
     }
+    public boolean delete(int index){
+        if (index > count){
+            return false;
+        }
+        for (int i = index; i < arrayListCustom.length- 1; i++) {
+          arrayListCustom[i]=   arrayListCustom[i + 1] ;
+          arrayListCustom[i + 1]= null;
+        }
+        count--;
+        return true;
+    }
+    
 
     @Override
     public boolean delete(Object object) {
         for (int i = 0; i < arrayListCustom.length - 1; i++) {
             if (Objects.equals(arrayListCustom[i], object)) {
-                delete(i + 1);
-
+                delete(i);
             }
         }
         return false;
@@ -51,12 +67,10 @@ public class ObjectArray implements ArrayFunctional{
 
     @Override
     public Object get(int index) {
-        for (int i = index; i < arrayListCustom.length-1; i++) {
-            arrayListCustom[i - 1] = arrayListCustom[i];
-            arrayListCustom[i] = null;
-        }
-        count--;
-        return null;
+      if (index > count){
+          System.out.println("Этот идекс пуст либо его не существует");
+      }
+      return arrayListCustom[index];
     }
 
     @Override
@@ -70,17 +84,18 @@ public class ObjectArray implements ArrayFunctional{
         }
 
     @Override
-    public boolean equals(Collection string) {
-        if (string == this) {
-            return true;
-        }
-        if (this.getClass() != string.getClass()) {
+    public boolean equals(ObjectArray array) {
+        if (count != array.size()){
             return false;
         }
-        ObjectArray customArrayList = (ObjectArray) string;
-        return this.count == customArrayList.count && Arrays.equals(this.arrayListCustom, customArrayList.arrayListCustom);
-
+        for (int i = 0; i < count; i++) {
+          if ( arrayListCustom[i] != (array.get(i))){
+              return false;
+          }
+        }
+        return true;
     }
+
 
 
     @Override
@@ -102,14 +117,37 @@ public class ObjectArray implements ArrayFunctional{
 
     @Override
     public void print() {
-            for (Object obj : arrayListCustom) {
-
-                System.out.print(obj + " ");
+        System.out.print("{ ");
+        for (int i = 0; i < count; i++) {
+            System.out.print(arrayListCustom[i] + " ");
         }
+        System.out.print("}");
     }
 
     @Override
     public int size() {
         return count;
     }
+
+    @Override
+    public boolean hasNext() {
+
+        return index < arrayListCustom.length;
+    }
+
+    @Override
+    public Object next() {
+        if (index <= arrayListCustom.length){
+            reset();
+        }
+        return arrayListCustom[index++];
+    }
+
+    @Override
+    public void reset() {
+        count = 0;
+
+    }
+
+
 }

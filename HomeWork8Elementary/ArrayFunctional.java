@@ -14,10 +14,11 @@ public interface ArrayFunctional {
 
     public boolean contain(Object object);
 
-    public boolean equals(Collection string);
+    public boolean equals(ObjectArray objectArray);
 
     public boolean clear();
 
     public void print();
     public int size();
+
 }
