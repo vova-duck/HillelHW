@@ -9,7 +9,7 @@ public class RunCaptcha {
             String[][] bufferMatrix = PseudoDigits.givePseudoDigits(array[i]);
 
             for (int j = 0; j < bufferMatrix.length; j++) {
-                for (int k =0  ; k < bufferMatrix[i].length; k++) {
+                for (int k =0  ; k < bufferMatrix[j].length; k++) {
                     captcha[j][k+i] = bufferMatrix[j][k];
                 }
             }
